@@ -9,10 +9,17 @@ FROM debian
 # File Author / Maintainer
 MAINTAINER  "incmve <https://github.com/incmve>"
 
+################## VARIABLES ######################
+ENV TZ Europe/Amsterdam
+# Set the locale
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8 
+
 ################## BEGIN INSTALLATION ######################
 # Install NodeJS v4.x
 RUN apt-get update \
-&& apt-get --yes install curl build-essential apt-utils git dialog wget libudev-dev \
+&& apt-get --yes install curl build-essential apt-utils git dialog wget libudev-dev locales nano \
 && curl -sL https://deb.nodesource.com/setup_4.x | bash - \
 && apt-get --yes install nodejs \
 && mkdir /home/pimatic/ \
@@ -23,9 +30,12 @@ RUN apt-get update \
 && chmod +x /etc/init.d/pimatic \
 && chown root:root /etc/init.d/pimatic \
 && update-rc.d pimatic defaults \
-&& sed -i "s/\"password\": \"\"/\"password\": \"admin\"/g" /home/pimatic/pimatic-app/config.json
+&& sed -i "s/\"password\": \"\"/\"password\": \"admin\"/g" /home/pimatic/pimatic-app/config.json \
+&& ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+&& sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+ locale-gen
 
-ENV TZ Europe/Amsterdam
+
 
 # Expose port
 EXPOSE 80
