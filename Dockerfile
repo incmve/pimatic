@@ -31,4 +31,4 @@ ENV TZ Europe/Amsterdam
 EXPOSE 80
 
 WORKDIR /home/pimatic/pimatic-app/
-CMD /home/pimatic/onstartup.sh start && bash
+CMD service pimatic start && bash
