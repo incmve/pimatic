@@ -24,7 +24,7 @@ RUN apt-get update \
 && apt-get --yes install nodejs \
 && mkdir /home/pimatic/ \
 && mkdir /home/pimatic/pimatic-app && touch /home/pimatic/pimatic-app/.npmignore \
-&& cd /home/pimatic/ && npm install pimatic@0.9.42 --prefix pimatic-app --production \
+&& cd /home/pimatic/ && npm install pimatic --prefix pimatic-app --production \
 && cp /home/pimatic/pimatic-app/node_modules/pimatic/config_default.json /home/pimatic/pimatic-app/config.json \
 && cd /home/pimatic/pimatic-app/node_modules/pimatic && npm link && wget https://raw.github.com/pimatic/pimatic/master/install/pimatic-init-d && cp pimatic-init-d /etc/init.d/pimatic \
 && chmod +x /etc/init.d/pimatic \
