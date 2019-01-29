@@ -1,7 +1,8 @@
 ## Pimatic for Docker
 "pimatic is a home automation framework that runs on node.js. It provides a common extensible platform for home control and automation tasks."
 
-This Dockerfile will create a container based on Debian, installs NodeJS (v4.x) and pimatic (v0.9.42) via NPM
+This Dockerfile will create a container based on Debian, installs NodeJS (v4.x) and pimatic via NPM.
+Issues with pimatic v0.9.43 seems to be resolved so the main branch is the lastest.
 
 
 # Setup
