@@ -4,6 +4,10 @@
 This Dockerfile will create a container based on Debian, installs NodeJS (v4.x) and pimatic via NPM.
 Issues with pimatic v0.9.43 seems to be resolved so the main branch is the lastest.
 
+# Versions
+* Latest - installs the lastest release version of pimatic
+* 0.9.42 - Specifically installs pimatic 0.9.42
+* nodeV8 - installs the lastest pimatic but with node V8 (Experimental)
 
 # Setup
 
@@ -11,8 +15,9 @@ Issues with pimatic v0.9.43 seems to be resolved so the main branch is the laste
 * Default login admin:admin
 * Default config in /home/pimatic/pimatic-app/config.json
 
-
-
+```
+docker run -p 3000:3000 --name pimatic -d -v /volume1/Docker/Pimatic/config.json:/home/pimatic/pimatic-app/config.json:rw incmve/pimatic-docker
+```
 
 NOTE!
 On first boot have patience!
