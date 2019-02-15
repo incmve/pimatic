@@ -19,7 +19,7 @@ ENV LC_ALL en_US.UTF-8
 ################## BEGIN INSTALLATION ######################
 # Install NodeJS v4.x
 RUN apt-get update \
-&& apt-get --yes install jq curl build-essential apt-utils git dialog wget libudev-dev locales nano ftp-upload \
+&& apt-get --yes install procps jq curl build-essential apt-utils git dialog wget libudev-dev locales nano ftp-upload \
 && curl -sL https://deb.nodesource.com/setup_4.x | bash - \
 && apt-get --yes install nodejs \
 && mkdir /home/pimatic/ \
