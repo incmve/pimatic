@@ -36,7 +36,6 @@ RUN apt-get update \
  locale-gen
 
 
-
 # Expose port
 EXPOSE 80
 
