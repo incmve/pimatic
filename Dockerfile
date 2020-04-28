@@ -17,10 +17,10 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8 
 
 ################## BEGIN INSTALLATION ######################
-# Install NodeJS v4.x
+# Install NodeJS v8.x
 RUN apt-get update \
 && apt-get --yes install procps jq curl build-essential apt-utils git dialog wget libudev-dev locales nano ftp-upload \
-&& curl -sL https://deb.nodesource.com/setup_4.x | bash - \
+&& curl -sL https://deb.nodesource.com/setup_8.x | bash - \
 && apt-get --yes install nodejs \
 && mkdir /home/pimatic/ \
 && mkdir /home/pimatic/pimatic-app && touch /home/pimatic/pimatic-app/.npmignore \
@@ -36,9 +36,8 @@ RUN apt-get update \
  locale-gen
 
 
-
 # Expose port
 EXPOSE 80
 
 WORKDIR /home/pimatic/pimatic-app/
-CMD service pimatic start && bash
+CMD service pimatic restart && bash
