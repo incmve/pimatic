@@ -21,7 +21,7 @@ ENV LC_ALL en_US.UTF-8
 RUN apt-get update \
 && apt-get --yes install procps jq curl build-essential apt-utils git dialog wget libudev-dev locales nano ftp-upload \
 && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-&& apt-get --yes install nodejs \
+&& apt-get --yes install nodejs npm \
 && mkdir /home/pimatic/ \
 && mkdir /home/pimatic/pimatic-app && touch /home/pimatic/pimatic-app/.npmignore \
 && cd /home/pimatic/ && npm install pimatic --prefix pimatic-app --production \
