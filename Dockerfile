@@ -31,6 +31,7 @@ RUN apt-get update \
 && sed -i "s/\"password\": \"\"/\"password\": \"admin\"/g" /home/pimatic/pimatic-app/config.json \
 && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+$$ cd /home/pimatic/pimatic-app/node_modules/ && npm install sqlite3 --force && \
  locale-gen
 
 
