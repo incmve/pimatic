@@ -17,7 +17,6 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8 
 
 ################## BEGIN INSTALLATION ######################
-# Install NodeJS v8.x
 RUN apt-get update \
 && apt-get --yes install procps jq curl build-essential apt-utils git dialog wget libudev-dev locales nano ftp-upload \
 && mkdir /home/pimatic/ \
@@ -28,12 +27,12 @@ RUN apt-get update \
 && chmod +x /etc/init.d/pimatic \
 && chown root:root /etc/init.d/pimatic \
 && update-rc.d pimatic defaults \
+&& cd /home/pimatic/pimatic-app/node_modules/ \
+&& npm install sqlite3 --force \
 && sed -i "s/\"password\": \"\"/\"password\": \"admin\"/g" /home/pimatic/pimatic-app/config.json \
 && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
-&& cd /home/pimatic/pimatic-app/node_modules/ && npm install sqlite3 --force && \
  locale-gen
-
 
 # Expose port
 EXPOSE 80
