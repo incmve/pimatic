@@ -4,7 +4,7 @@
 ############################################################
 
 # Set the base image
-FROM node:8.0.0
+FROM node:10.0.0
 
 # File Author / Maintainer
 MAINTAINER  "incmve <https://github.com/incmve>"
