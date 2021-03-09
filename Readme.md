@@ -1,3 +1,6 @@
+## No longer maintained.
+
+
 ## Pimatic for Docker
 "pimatic is a home automation framework that runs on node.js. It provides a common extensible platform for home control and automation tasks."
 
